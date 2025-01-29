@@ -28,4 +28,4 @@ iostat -dxz /dev/nvme0n1 1
 # Results
 We compared parallel writeback with the base case (single-thread writeback). The parallel writeback finishes in 14-15 seconds, while the single-thread writeback takes 28 seconds. Parallel writeback offers higher bandwidth. In fact, parallel writeback completes the same data writeback to the device in roughly half the time of the single-thread approach.
 
-![Image](https://github.com/user-attachments/assets/1ae5045b-6181-4ea3-b17f-81f93ffe3224)
+![Image](https://github.com/user-attachments/assets/86a3bcaf-30be-4295-bd2e-7eab4b95cf56)
