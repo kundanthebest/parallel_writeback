@@ -6,19 +6,24 @@ We run a fio workload, spawning 24 jobs each doing 1GiB of I/O. The total I/O is
 The idea is to measure the amount of time taken (and bandwidth) to writeback this data from cache to device. We measure that using iostat.
 
 
-# The fio job script used for measuring the performance:
+# The fio job script used for measuring the performance
 mkfs.xfs -f /dev/nvme0n1
+
 mount /dev/nvme0n1 /mnt
+
 sync
+
 echo 3 > /proc/sys/vm/drop_caches
  
 fio --directory=/mnt --name=test --bs=4k --iodepth=1024 --rw=randwrite --ioengine=io_uring  --numjobs=24 --size=1G  --direct=0 --eta-interval=1 --eta-newline=1 --group_reporting
- 
+
 umount /mnt
+
 echo 3 > /proc/sys/vm/drop_caches
+
 sync
 
-# Iostat command used:
+# Iostat command used
 iostat -dxz /dev/nvme0n1 1
 
 # Results
